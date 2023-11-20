@@ -1,0 +1,44 @@
+dataset:
+  allowed_digits: 9
+  height: 28
+  name: mnist
+  train_set: 0.8
+  width: 28
+exp_name: ConvolutionalAutoEncoder_mnist_2023-Sep-18-12-31-13_766395
+experiment:
+  dir: results
+  gpu_id: 7
+  name: convolution_mnist
+  num_agents: 2
+  random_seed: 42
+model:
+  categorical_dim: 10
+  dropout: 0.2
+  embed_dim: 64
+  hidden_dim: 128
+  latent_dim: 30
+  name: ConvolutionalAutoEncoder
+  num_channels: 1
+  num_heads: 8
+  num_layers: 6
+run_id: '766395'
+save_dir: results/convolution_mnist
+test:
+  batch_size: 100
+  exp_dir: results/convolution_mnist
+  exp_model_name: agent_with_bottleneck_dim_10.pth
+  hard: true
+  runner: test_runner
+  temperature: 0.5
+train:
+  anneal_rate: 3.0e-05
+  batch_size: 100
+  drop_last: true
+  epochs: 101
+  hard: false
+  log_interval: 10
+  runner: train_runner
+  shuffle: true
+  temp_min: 0.5
+  temperature: 1
+  timesteps: 1000

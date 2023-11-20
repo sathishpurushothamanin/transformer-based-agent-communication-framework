@@ -1,0 +1,41 @@
+experiment:
+    name: convolution_mnist
+    dir: results
+    random_seed: 42
+    gpu_id: 7
+    num_agents: 2
+dataset:
+    name: mnist
+    height: 28
+    width: 28
+    allowed_digits: 9
+    train_set: 0.8    
+model:
+    name: ConvolutionalAutoEncoder
+    latent_dim: 30
+    categorical_dim: 10
+    embed_dim: 64
+    hidden_dim: 128
+    num_heads: 8
+    num_layers: 6
+    num_channels: 1
+    dropout: 0.2
+train:
+    runner: train_runner
+    temp_min: 0.5
+    temperature: 1
+    hard: False
+    batch_size: 100
+    shuffle: True
+    drop_last: True
+    log_interval: 10
+    epochs: 200
+    timesteps: 1000
+    anneal_rate: 0.00003
+test:
+    runner: test_runner
+    temperature: 0.5
+    hard: True
+    batch_size: 100
+    exp_dir: results/convolution_mnist
+    exp_model_name: agent_with_bottleneck_dim_10.pth
